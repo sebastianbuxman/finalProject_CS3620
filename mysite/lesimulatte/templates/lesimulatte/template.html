@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>LeSimulatte</title>
+</head>
+<body>
+    <form action="" method="GET">
+        <input type="search" name="clothing_name">
+        <button type="submit">Search</button>
+    </form>
+    {% for clothing_item in clothing_object %}
+        <h3>{{ clothing_item.name }}</h3>
+        <br>
+        <img src="/media/Images{{ clothing_item.image }}" alt="{{clothing_item.name}}">
+        <br>
+        Price: ${{ clothing_item.price}}
+        <br>
+        Description: {{ clothing_item.desc}}
+        <br>
+
+    {% endfor %}
+</body>
+</html>
