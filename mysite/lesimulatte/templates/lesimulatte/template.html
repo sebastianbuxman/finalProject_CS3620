@@ -15,7 +15,7 @@
     {% for clothing_item in clothing_object %}
         <h3>{{ clothing_item.name }}</h3>
         <br>
-        <img src="/media/Images{{ clothing_item.image }}" alt="{{clothing_item.name}}">
+        <img src="{{ clothing_item.image.url }}" alt="{{clothing_item.name}}">
         <br>
         Price: ${{ clothing_item.price}}
         <br>
