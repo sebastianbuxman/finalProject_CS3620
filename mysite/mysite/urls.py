@@ -16,8 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from lesimulatte import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home/', views.clothing_list, name='clothing_list'),
+    path('', views.clothing_list, name='clothing_list'),
+    path('buy/<int:clothing_id>/',views.buyItems, name='buy_items'),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

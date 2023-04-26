@@ -1,4 +1,6 @@
-from django.shortcuts import render
+from django.http import HttpResponse
+from django.template import loader
+from django.shortcuts import render, get_object_or_404
 from .models import Clothing
 from django.core.paginator import Paginator
 
@@ -12,3 +14,17 @@ def clothing_list(request):
     page = request.GET.get('page')
     clothing_object = paginator.get_page(page)
     return render(request, 'lesimulatte/template.html', {'clothing_object': clothing_object})
+
+def buyItems(request, clothing_id):
+    #buy_items = Clothing.objects.all()
+    #template = loader.get_template('lesimulatte/buyItem.html')
+    clothing = get_object_or_404(Clothing, id=clothing_id)
+    template = loader.get_template('lesimulatte/buyItem.html')
+    context = {
+        'clothing': clothing
+    }
+    '''context = {
+        'buy_items': buy_items
+    }'''
+    return HttpResponse(template.render(context, request))
+
