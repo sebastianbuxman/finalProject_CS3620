@@ -23,6 +23,11 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.clothing_list, name='clothing_list'),
     path('buy/<int:clothing_id>/',views.buyItems, name='buy_items'),
+    path('buy/payment/', views.payment_view, name='payment'),
+    #path('sign-in/', views.sign_in, name='sign_in'),
+    path("register/", views.register_request, name="register"),
+    path("login", views.login_request, name="login"),
+    path("logout", views.logout_request, name= "logout"),
 ]
 
 if settings.DEBUG:
